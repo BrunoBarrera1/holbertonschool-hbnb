@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Review</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="HBnB Logo" class="sidebar-logo">
+    <nav class="sidebar-nav">
+      <a id="home-link" href="{{ url_for('frontend.index') }}" style="display:none;">Home</a>
+      <a id="sidebar-login" href="{{ url_for('frontend.login') }}">Login</a>
+      <a id="sidebar-register" href="{{ url_for('frontend.register') }}">Register</a>
+      <a id="sidebar-logout" href="#" style="display:none;">Logout</a>
+      <a id="create-place-link" href="{{ url_for('frontend.add_place') }}" style="display:none;">+ Place</a>
+      <a id="create-amenity-link" href="{{ url_for('frontend.add_amenity') }}" style="display:none;">+ Amenity</a>
+      <a id="create-review-link" href="{{ url_for('frontend.add_review') }}" style="display:none;">+ Review</a>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <main class="main-content">
+    <div class="container form-container">
+      <h1 style="color: #c00;">This page is deprecated. Por favor, deja tu review desde la página de detalles del lugar.</h1>
+    </div>
+  </main>
+
+  <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+  <script>
+    // Show place name when loaded
+    document.addEventListener('DOMContentLoaded', async () => {
+      const params = new URLSearchParams(window.location.search);
+      const placeId = params.get('place_id');
+      if (!placeId) return;
+
+      try {
+        const res = await fetch(`/api/v1/places/${placeId}`);
+        if (!res.ok) throw new Error('Place not found');
+        const place = await res.json();
+        document.getElementById('place-name').textContent = place.title;
+      } catch (err) {
+        document.getElementById('place-name').textContent = '(Error loading)';
+        console.error('Error loading place title:', err);
+      }
+    });
+  </script>
+</body>
+</html>

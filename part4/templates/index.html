@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HBnB – Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='icon.png') }}">
+</head>
+<body>
+  <aside class="sidebar">
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="HBnB Logo" class="sidebar-logo">
+    <nav class="sidebar-nav">
+      <a id="home-link" href="{{ url_for('frontend.index') }}" class="hidden">Home</a>
+      <a id="sidebar-login" href="{{ url_for('frontend.login') }}">Login</a>
+      <a id="sidebar-register" href="{{ url_for('frontend.register') }}">Register</a>
+      <a id="sidebar-logout" href="#" class="hidden">Logout</a>
+      <a id="create-place-link" href="{{ url_for('frontend.add_place') }}" class="hidden">+ Place</a>
+      <a id="create-amenity-link" href="{{ url_for('frontend.add_amenity') }}" class="hidden">+ Amenity</a>
+      <a id="create-review-link" href="{{ url_for('frontend.add_review') }}" class="hidden">+ Review</a>
+      <button id="toggle-dark" type="button">Dark Mode</button>
+      <button id="custom-theme-btn" type="button">Custom</button>
+    </nav>
+  </aside>
+
+  <header class="site-header">
+    <div class="container header-container">
+      <h1>HBnB – Home</h1>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <div class="filter-bar">
+        <h2>Available Places</h2>
+        <label for="price-filter">Filter by price:</label>
+        <select id="price-filter" name="price-filter" title="Filter by price">
+          <option value="all">All prices</option>
+          <option value="100">Under $100</option>
+          <option value="200">Under $200</option>
+          <option value="300">Under $300</option>
+        </select>
+      </div>
+
+      <section id="places-list" class="places-container">
+        <!-- JS will insert place cards here -->
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2025 HBnB. All rights reserved.</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>

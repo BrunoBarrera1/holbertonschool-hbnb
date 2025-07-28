@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Amenity – HBnB</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <aside class="sidebar">
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="HBnB Logo" class="sidebar-logo">
+    <nav class="sidebar-nav">
+      <a id="home-link" href="{{ url_for('frontend.index') }}" style="display:none;">Home</a>
+      <a id="sidebar-login" href="{{ url_for('frontend.login') }}">Login</a>
+      <a id="sidebar-register" href="{{ url_for('frontend.register') }}">Register</a>
+      <a id="sidebar-logout" href="#" style="display:none;">Logout</a>
+      <a id="create-place-link" href="{{ url_for('frontend.add_place') }}" style="display:none;">+ Place</a>
+      <a id="create-amenity-link" href="{{ url_for('frontend.add_amenity') }}" style="display:none;">+ Amenity</a>
+      <a id="create-review-link" href="{{ url_for('frontend.add_review') }}" style="display:none;">+ Review</a>
+    </nav>
+  </aside>
+
+  <header class="site-header">
+    <div class="container header-container">
+      <h1>Add New Amenity</h1>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container form-container">
+      <form id="amenity-form" class="form-styled">
+        <label for="name">Amenity Name:</label>
+        <input type="text" id="name" required>
+        <button type="submit">Add Amenity</button>
+      </form>
+    </div>
+  </main>
+
+  <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>

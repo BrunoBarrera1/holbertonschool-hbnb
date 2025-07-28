@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Place – HBnB</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <aside class="sidebar">
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="HBnB Logo" class="sidebar-logo">
+    <nav class="sidebar-nav">
+      <a id="home-link" href="{{ url_for('frontend.index') }}" style="display:none;">Home</a>
+      <a id="sidebar-login" href="{{ url_for('frontend.login') }}">Login</a>
+      <a id="sidebar-register" href="{{ url_for('frontend.register') }}">Register</a>
+      <a id="sidebar-logout" href="#" style="display:none;">Logout</a>
+      <a id="create-place-link" href="{{ url_for('frontend.add_place') }}" style="display:none;">+ Place</a>
+      <a id="create-amenity-link" href="{{ url_for('frontend.add_amenity') }}" style="display:none;">+ Amenity</a>
+      <a id="create-review-link" href="{{ url_for('frontend.add_review') }}" style="display:none;">+ Review</a>
+    </nav>
+  </aside>
+
+  <header class="site-header">
+    <div class="container header-container">
+      <h1>Add New Place</h1>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container form-container">
+      <form id="place-form" class="form-styled">
+        <fieldset style="border:none; padding:0; margin:0;">
+          <legend style="font-size:1.3em; margin-bottom:10px;">Place Information</legend>
+          <div class="form-row">
+            <label for="title">Title:</label>
+            <input type="text" id="title" required placeholder="e.g. Gable roof house">
+          </div>
+          <div class="form-row">
+            <label for="description">Description:</label>
+            <textarea id="description" required placeholder="Describe your place"></textarea>
+          </div>
+          <div class="form-row">
+            <label for="price">Price per Night:</label>
+            <input type="number" id="price" min="0" required placeholder="e.g. 200">
+          </div>
+          <div class="form-row">
+            <label for="latitude">Latitude:</label>
+            <input type="number" step="any" id="latitude" required placeholder="e.g. -34.6037">
+          </div>
+          <div class="form-row">
+            <label for="longitude">Longitude:</label>
+            <input type="number" step="any" id="longitude" required placeholder="e.g. -58.3816">
+          </div>
+        </fieldset>
+        <fieldset style="border:none; padding:0; margin:0; margin-top:20px;">
+          <legend style="font-size:1.1em; margin-bottom:10px;">Amenities</legend>
+          <div class="form-row">
+            <label for="amenities">Amenities (IDs separated by commas):</label>
+            <input type="text" id="amenities" placeholder="e.g. wifi, pool">
+            <div id="amenities-list-container"></div>
+          </div>
+        </fieldset>
+        <div style="margin-top:20px; text-align:right;">
+          <button type="submit" class="btn-primary" id="place-submit-btn">Add Place</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+  <script src="{{ url_for('static', filename='amenities.js') }}"></script>
+</body>
+</html>
